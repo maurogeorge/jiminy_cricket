@@ -12,7 +12,7 @@ defmodule JiminyCricket.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:httpoison, :logger]]
   end
 
   # Dependencies can be hex.pm packages:
@@ -25,6 +25,9 @@ defmodule JiminyCricket.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      { :httpoison, "~> 0.4" },
+      { :jsex , "~> 2.0" },
+    ]
   end
 end
