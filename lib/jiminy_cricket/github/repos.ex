@@ -4,7 +4,7 @@ defmodule JiminyCricket.Github.Repos do
   @organization_name Application.get_env(:jiminy_cricket, :organization_name)
 
   def fetch do
-    url |> HTTPoison.get |> handle_response
+    url |> HTTPoison.get |> handle_response |> build_repos
   end
 
   def url do
@@ -14,4 +14,6 @@ defmodule JiminyCricket.Github.Repos do
   def handle_response(%{status_code: 200, body: body}) do
     JSEX.decode body
   end
+
+  def build_repos({:ok, repos}), do: repos
 end
