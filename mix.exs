@@ -4,7 +4,7 @@ defmodule JiminyCricket.Mixfile do
   def project do
     [app: :jiminy_cricket,
      version: "0.0.1",
-     elixir: "~> 0.15.0",
+     elixir: "~> 1.0.0",
      deps: deps]
   end
 
@@ -12,7 +12,7 @@ defmodule JiminyCricket.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:httpoison, :logger]]
+    [applications: [:httpoison, :logger, :timex]]
   end
 
   # Dependencies can be hex.pm packages:
@@ -28,6 +28,7 @@ defmodule JiminyCricket.Mixfile do
     [
       { :httpoison, "~> 0.4" },
       { :jsex , "~> 2.0" },
+      { :timex, "~> 0.12.6" },
     ]
   end
 end
