@@ -2,6 +2,8 @@ defmodule JiminyCricket.Github.Issues do
 
   @today Timex.Date.now
   @two_weeks_ago -2
+  @comment "![Jiminy Cricket](http://www.disneyclips.com/imagesnewb/imageslwrakr01/clipjimp.gif)"
+  @github_access_token "" # The idea is change this to use dotenv
 
   def fetch(repo) do
     parse_issue_url(repo)
@@ -13,6 +15,11 @@ defmodule JiminyCricket.Github.Issues do
     {:ok, issue_date } = Timex.DateFormat.parse(issue["updated_at"], "{ISOz}")
     weeks = Timex.Date.diff(@today, issue_date, :weeks)
     weeks <= @two_weeks_ago
+  end
+
+  def create_comment(issue) do
+    full_url = "#{issue["comments_url"]}?access_token=#{@github_access_token}"
+    HTTPoison.post full_url, "{ \"body\": \"#{@comment}\" }"
   end
 
   defp parse_issue_url(repo), do: Regex.replace(~r({/number}), repo["issues_url"], "")
