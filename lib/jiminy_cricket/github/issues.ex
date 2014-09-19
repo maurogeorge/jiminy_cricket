@@ -1,5 +1,7 @@
 defmodule JiminyCricket.Github.Issues do
 
+  @today Timex.Date.now
+  @two_weeks_ago -2
 
   def fetch(repo) do
     parse_issue_url(repo)
@@ -9,9 +11,8 @@ defmodule JiminyCricket.Github.Issues do
 
   def last_iteration_happened_more_than_two_weeks_ago?(issue) do
     {:ok, issue_date } = Timex.DateFormat.parse(issue["updated_at"], "{ISOz}")
-    today = Timex.Date.now
-    weeks = Timex.Date.diff(today, issue_date, :weeks)
-    weeks <= -2
+    weeks = Timex.Date.diff(@today, issue_date, :weeks)
+    weeks <= @two_weeks_ago
   end
 
   defp parse_issue_url(repo), do: Regex.replace(~r({/number}), repo["issues_url"], "")
