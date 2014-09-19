@@ -7,13 +7,13 @@ defmodule JiminyCricket.Github.Repos do
     url |> HTTPoison.get |> handle_response |> build_repos
   end
 
-  def url do
+  defp url do
     "#{@github_api_url}/orgs/#{@organization_name}/repos"
   end
 
-  def handle_response(%{status_code: 200, body: body}) do
+  defp handle_response(%{status_code: 200, body: body}) do
     JSEX.decode body
   end
 
-  def build_repos({:ok, repos}), do: repos
+  defp build_repos({:ok, repos}), do: repos
 end
