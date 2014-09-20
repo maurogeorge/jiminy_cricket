@@ -18,15 +18,15 @@ defmodule JiminyCricket.Github.Issues do
   end
 
   def create_comment(issue) do
-    full_url = "#{issue["comments_url"]}?access_token=#{@github_access_token}"
-    HTTPoison.post full_url, "{ \"body\": \"#{@comment}\" }"
+    JiminyCricket.Github.Url.append_access_token(issue["comments_url"])
+    |> HTTPoison.post "{ \"body\": \"#{@comment}\" }"
   end
 
   defp parse_issue_url(repo), do: Regex.replace(~r({/number}), repo["issues_url"], "")
 
   defp get_issues(issue_url) do
-    issue_url = "#{issue_url}?access_token=#{@github_access_token}"
-    issue_url |> HTTPoison.get |> handle_response
+    JiminyCricket.Github.Url.append_access_token(issue_url)
+    |> HTTPoison.get |> handle_response
   end
 
   defp handle_response(%{status_code: 200, body: body}) do
