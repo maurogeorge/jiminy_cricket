@@ -9,7 +9,7 @@ defmodule JiminyCricket.Github.Repos do
   end
 
   defp url do
-    "#{@github_api_url}/orgs/#{@organization_name}/repos?access_token=#{@github_access_token}"
+    JiminyCricket.Github.Url.append_access_token "#{@github_api_url}/orgs/#{@organization_name}/repos"
   end
 
   defp handle_response(%{status_code: 200, body: body}) do
