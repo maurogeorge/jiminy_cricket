@@ -3,7 +3,6 @@ defmodule JiminyCricket.Github.Issues do
   @today Timex.Date.now
   @two_weeks_ago -2
   @comment "![Jiminy Cricket](http://www.disneyclips.com/imagesnewb/imageslwrakr01/clipjimp.gif)"
-  @github_access_token System.get_env "GITHUB_ACCESS_TOKEN"
 
   def fetch(repo) do
     parse_issue_url(repo)
