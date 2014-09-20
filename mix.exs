@@ -12,7 +12,7 @@ defmodule JiminyCricket.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:httpoison, :logger, :timex]]
+    [applications: [:httpoison, :logger, :timex, :dotenv]]
   end
 
   # Dependencies can be hex.pm packages:
@@ -29,6 +29,7 @@ defmodule JiminyCricket.Mixfile do
       { :httpoison, "~> 0.4" },
       { :jsex , "~> 2.0" },
       { :timex, "~> 0.12.6" },
+      { :dotenv, git: "https://github.com/maurogeorge/dotenv_elixir", branch: "elixir1.0" },
     ]
   end
 end
