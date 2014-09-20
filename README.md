@@ -33,7 +33,9 @@ To run this project you need to have:
 
     1. Set the enviroment variables:
 
-      GITHUB_ACCESS_TOKEN: <github_access_token>
+            GITHUB_ACCESS_TOKEN: <github_access_token>
+
+        You can learn more about [GITHUB_ACCESS_TOKEN](https://help.github.com/articles/creating-an-access-token-for-command-line-use) here.
 
     :warning: :warning: Warning: Those files are ignored by git and should not be commited to the repository.
 
