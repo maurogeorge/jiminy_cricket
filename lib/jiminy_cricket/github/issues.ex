@@ -3,7 +3,7 @@ defmodule JiminyCricket.Github.Issues do
   @today Timex.Date.now
   @two_weeks_ago -2
   @comment "![Jiminy Cricket](http://www.disneyclips.com/imagesnewb/imageslwrakr01/clipjimp.gif)"
-  @github_access_token "" # The idea is change this to use dotenv
+  @github_access_token System.get_env "GITHUB_ACCESS_TOKEN"
 
   def fetch(repo) do
     parse_issue_url(repo)
@@ -25,6 +25,7 @@ defmodule JiminyCricket.Github.Issues do
   defp parse_issue_url(repo), do: Regex.replace(~r({/number}), repo["issues_url"], "")
 
   defp get_issues(issue_url) do
+    issue_url = "#{issue_url}?access_token=#{@github_access_token}"
     issue_url |> HTTPoison.get |> handle_response
   end
 
