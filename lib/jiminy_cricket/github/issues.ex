@@ -5,6 +5,7 @@ defmodule JiminyCricket.Github.Issues do
   @comment "![Jiminy Cricket](http://www.disneyclips.com/imagesnewb/imageslwrakr01/clipjimp.gif)"
 
   def fetch(repo) do
+    IO.puts "-> Searching for issues on #{repo["full_name"]}"
     parse_issue_url(repo)
     |> get_issues
     |> build_issues
@@ -17,6 +18,7 @@ defmodule JiminyCricket.Github.Issues do
   end
 
   def create_comment(issue) do
+    IO.puts "--> Creating comment on #{issue["html_url"]}"
     JiminyCricket.Github.Url.append_access_token(issue["comments_url"])
     |> HTTPoison.post "{ \"body\": \"#{@comment}\" }"
   end
