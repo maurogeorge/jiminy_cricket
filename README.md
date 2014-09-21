@@ -42,13 +42,13 @@ To run this project you need to have:
 
 ## Running the project
 
-1. Enter the `iex`
+1. Build the executable
 
-        $ iex -S mix
+        $ mix escript.build
 
-1. Run the cli
+1. Run the executable
 
-        $ JiminyCricket.CLI.main
+       $ ./jiminy_cricket
 
 ## Roadmap
 

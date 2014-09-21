@@ -5,6 +5,7 @@ defmodule JiminyCricket.Mixfile do
     [app: :jiminy_cricket,
      version: "0.0.1",
      elixir: "~> 1.0.0",
+     escript: escript_config,
      deps: deps]
   end
 
@@ -31,5 +32,9 @@ defmodule JiminyCricket.Mixfile do
       { :timex, "~> 0.12.6" },
       { :dotenv, git: "https://github.com/maurogeorge/dotenv_elixir", branch: "elixir1.0" },
     ]
+  end
+
+  defp escript_config do
+    [ main_module: JiminyCricket.CLI ]
   end
 end

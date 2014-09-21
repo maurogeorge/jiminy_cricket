@@ -1,6 +1,6 @@
 defmodule JiminyCricket.CLI do
 
-  def main do
+  def main(_) do
     JiminyCricket.Github.Repos.fetch
     |> Enum.map(&JiminyCricket.Github.Issues.fetch(&1))
     |> List.flatten
