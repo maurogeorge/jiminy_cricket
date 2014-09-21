@@ -48,7 +48,7 @@ To run this project you need to have:
 
 1. Run the executable
 
-       $ ./jiminy_cricket
+        $ ./jiminy_cricket
 
 ## Roadmap
 
